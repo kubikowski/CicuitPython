@@ -6,8 +6,9 @@ import digitalio
 
 # ------------------------------------------------------------------------------
 # Pins
-RED_LED_PIN = board.D13
 GREEN_LED_PIN = board.D3
+PWM_PIN = board.D9
+RED_LED_PIN = board.D13
 DAC_PIN = board.A0
 
 # ------------------------------------------------------------------------------
