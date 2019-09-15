@@ -1,16 +1,11 @@
-# ------------------------------------------------------------------------------
-# Imports
 import digitalio
 import pulseio
-
 import pinoutService as ps
 
-# ------------------------------------------------------------------------------
 # Globals
 FREQUENCY = 1
 DUTY_CYCLE = 0x7fff
 
-# ------------------------------------------------------------------------------
 # Methods
 def init():
     ps.redLed.direction = digitalio.Direction.OUTPUT

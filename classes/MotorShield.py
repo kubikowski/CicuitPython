@@ -1,5 +1,3 @@
-# ------------------------------------------------------------------------------
-# Imports
 import adafruit_motorkit as am
 
 class MotorShield(object):
