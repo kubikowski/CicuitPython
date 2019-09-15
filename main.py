@@ -1,20 +1,22 @@
 # -----------------------------------------------------------------------------
 # Path Variables
 from sys import path
-path.insert(1, '/scripts')
-path.insert(2, '/services')
+path.insert(1, '/classes')
+path.insert(2, '/scripts')
+path.insert(3, '/services')
 
 # -----------------------------------------------------------------------------
 # Imports
 import util
-import test
+import motorShield as ms
 
 # -----------------------------------------------------------------------------
 # Setup
 util.setup()
+ms.setup()
 
 # -----------------------------------------------------------------------------
 # Main
 while True:
-    test.counting()
+    ms.strikeGong()
     util.getInput('Type any character to continue: ')
