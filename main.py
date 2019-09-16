@@ -14,4 +14,4 @@ util.setup()
 # Main
 while True:
     steps = util.getInput('Type any character to continue: ')
-    motors.strikeGong(steps)
+    motors.strikeGong()
