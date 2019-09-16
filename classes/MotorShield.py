@@ -5,16 +5,16 @@ class MotorShield(object):
         self.kit = am.MotorKit()
 
     def steps(steps):
-        for i in range(steps):
+        for i in range(self, steps):
             self.kit.stepper1.onestep()
 
-    def powerSteps(steps):
+    def powerSteps(self, steps):
         for i in range(steps):
             self.kit.stepper1.onestep(style=am.stepper.DOUBLE)
 
-    def smoothSteps(steps):
+    def smoothSteps(self, steps):
         for i in range(steps):
             self.kit.stepper1.onestep(style=am.stepper.MICROSTEP)
 
-    def release():
+    def release(self):
         self.kit.stepper1.release()

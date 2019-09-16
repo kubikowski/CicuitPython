@@ -1,8 +1,8 @@
-import boardIO as io
+import ioService as io
 import pinoutService as ps
 
 # Globals
-WAIT_TO_START = True
+WAIT_TO_START = False
 
 # Methods
 def setup():
