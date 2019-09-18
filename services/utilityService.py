@@ -9,8 +9,8 @@ def setup():
     io.init()
     if WAIT_TO_START:
         getInput('Type any character to begin: ')
-    io.setPWM(ps.PWM_PIN)
-    io.setARef(0x7fff)
+    io.setPWM()
+    io.setARef()
 
 def getInput(message):
     ps.redLed.value = True
