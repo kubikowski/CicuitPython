@@ -1,10 +1,26 @@
 import adafruit_motorkit as am
 from adafruit_motor import stepper
 
+class Stepper(object):
+    # private methods
+    def __init__(self, stepper):
+        self.__stepper = stepper
+
+    # protected methods
+    def _step(self, steps, **kwargs):
+        for i in range(steps):
+            self.__stepper.onestep(**kwargs)
+
+    def _release(self):
+        self.__stepper.release()
+
 class MotorShield(object):
     # private methods
     def __init__(self):
         self.__kit = am.MotorKit()
+        self.__stepper1 = Stepper(self.__kit.stepper1)
+        self.__stepper2 = Stepper(self.__kit.stepper2)
+
 
     def __throttle(self, Motor, speed):
         if Motor == 1:
@@ -18,17 +34,15 @@ class MotorShield(object):
 
     def __step(self, Stepper, steps, **kwargs):
         if Stepper == 1:
-            for i in range(steps):
-                self.__kit.stepper1.onestep(**kwargs)
+            self.__stepper1._step(**kwargs)
         elif Stepper == 2:
-            for i in range(steps):
-                self.__kit.stepper2.onestep(**kwargs)
+            self.__stepper2._step(**kwargs)
 
-    def __release(self, Stepper):
-        if Stepper == 1:
-            self.__kit.stepper2.release()
-        elif Stepper == 2:
-            self.__kit.stepper1.release()
+    def __release(self, stepper):
+        if stepper == 1:
+            self.__stepper2._release()
+        elif stepper == 2:
+            self.__stepper1._release()
 
     # public methods
     def throttle(self, *args, **kwargs):
@@ -44,11 +58,11 @@ class MotorShield(object):
         self.__throttle(Motor, 0.0)
 
     def step(self, steps, *args, **kwargs):
-        Stepper = args[0] if len(args) == 1 else 1
+        stepper = args[0] if len(args) == 1 else 1
 
-        self.__step(Stepper, steps, **kwargs)
+        self.__step(stepper, steps, **kwargs)
 
     def release(self, *args):
-        Stepper = args[0] if len(args) == 1 else 1
+        stepper = args[0] if len(args) == 1 else 1
 
-        self.__release(Stepper)
+        self.__release(stepper)
